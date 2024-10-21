@@ -1,17 +1,18 @@
 .button {
-    color: var(--black);
+    color: var(--white);
     padding: 5px 10px;
     border-radius: 5px;
     transition: background-color 0.3s ease-in-out;
     &.colorScheme__1{
-        background-color: var(--green);
-        color: var(--white);
+        background-color: var(--dark-blue);
+        padding: 14px 64px;
+        font-size: 20px;
         &:hover{
-            color: var(--green);
-            background-color: var(--white);
+            background-color: var(--dark-blue-hover);
         }
     }
     &.colorScheme__2{
+        color: var(--black);
         background-color: var(--light-blue);
         &:hover{
             background-color: var(--light-blue-hover);

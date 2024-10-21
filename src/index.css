@@ -10,6 +10,11 @@
     --light-blue: #7CE3E1;
 	--light-blue-hover: #7ce3e1ad;
     --dark-blue: #5970FF;
+	--dark-blue-hover: #596fffb9;
+
+	padding: 0 20px;
+	max-width: 1440px;
+	margin: 0 auto;
   }
 
 
@@ -39,7 +44,6 @@ html,body{
 	-ms-text-size-adjust: 100%;
 	-moz-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
-	padding: 0 20px; /*отступы для всей страницы*/
 }
 input,button,textarea{font-family:inherit;}
 
