@@ -2,7 +2,17 @@
     font-family: 'Inter', Arial, Helvetica, sans-serif;
     line-height: 1.5;
     font-weight: 400;
+
+    --marine-blue: #029491;
+    --white: #FFFFFF;
+    --black: #000000;
+    --yellow: #FFB64F;
+    --light-blue: #7CE3E1;
+	--light-blue-hover: #7ce3e1ad;
+    --dark-blue: #5970FF;
   }
+
+
   /*Normalize*/
 
 *{
@@ -29,6 +39,7 @@ html,body{
 	-ms-text-size-adjust: 100%;
 	-moz-text-size-adjust: 100%;
 	-webkit-text-size-adjust: 100%;
+	padding: 0 20px; /*отступы для всей страницы*/
 }
 input,button,textarea{font-family:inherit;}
 
@@ -42,8 +53,3 @@ img{vertical-align: top;}
 
 h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 /*--------------------*/
-
-.bigred{
-	font-size: 20px;
-	color: red;
-}

@@ -1,0 +1,20 @@
+.button {
+    color: var(--black);
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+    &.colorScheme__1{
+        background-color: var(--green);
+        color: var(--white);
+        &:hover{
+            color: var(--green);
+            background-color: var(--white);
+        }
+    }
+    &.colorScheme__2{
+        background-color: var(--light-blue);
+        &:hover{
+            background-color: var(--light-blue-hover);
+        }
+    }
+}
