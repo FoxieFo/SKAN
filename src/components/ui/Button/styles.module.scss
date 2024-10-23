@@ -10,12 +10,18 @@
         &:hover{
             background-color: var(--dark-blue-hover);
         }
+        &:active{
+            background-color: gray;
+        }
     }
     &.colorScheme__2{
         color: var(--black);
         background-color: var(--light-blue);
         &:hover{
             background-color: var(--light-blue-hover);
+        }
+        &:active{
+            background-color: rgb(187, 187, 187);
         }
     }
 }

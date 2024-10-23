@@ -1,13 +1,13 @@
 import s from './styles.module.scss'
-import RateCard from './../ui/RateCard/RateCard'
+import RateCard from '../ui/RateCard/RateCard'
 
 import LightBulb from './../../assets/images/icons/light-bulb.svg'
 import Target from './../../assets/images/icons/target.svg'
 import Laptop from './../../assets/images/icons/laptop.svg'
 
-export default function Rates() {
+export default function Plans() {
 
-    const ratesData = [
+    const plansData = [
         {
             img: LightBulb,
             title: 'Beginner',
@@ -59,10 +59,10 @@ export default function Rates() {
     };
 
     return (
-        <section className={s.rates__container}>
-            <h3 className={s.rates__title}>наши тарифы</h3>
-            <div className={s.rates__options}>
-                {ratesData.map((rate, index) => (
+        <section className={s.plans__container}>
+            <h3 className={s.plans__title}>наши тарифы</h3>
+            <div className={s.plans__options}>
+                {plansData.map((rate, index) => (
                     <RateCard
                         key={index}
                         img={rate.img}

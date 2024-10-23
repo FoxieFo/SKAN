@@ -1,5 +1,8 @@
 .herosection {
     &__container {
+        padding: 0 20px;
+        max-width: 1440px;
+        margin: 0 auto;
         display: flex;
         justify-content: space-between;
         gap: 30px;

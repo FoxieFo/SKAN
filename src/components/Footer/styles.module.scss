@@ -1,0 +1,26 @@
+.footer {
+    &__container {
+        background-color: var(--marine-blue);
+        margin-top: 119px;
+    }
+
+    &__content{
+        padding: 0 20px;
+        max-width: 1440px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__info {
+        color: var(--white);
+        display: flex;
+        flex-direction: column;
+        text-align: end;
+
+        & p {
+            margin-top: 21px;
+        }
+    }
+}

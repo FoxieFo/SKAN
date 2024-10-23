@@ -11,10 +11,6 @@
 	--light-blue-hover: #7ce3e1ad;
     --dark-blue: #5970FF;
 	--dark-blue-hover: #596fffb9;
-
-	padding: 0 20px;
-	max-width: 1440px;
-	margin: 0 auto;
   }
 
   /*Normalize*/
