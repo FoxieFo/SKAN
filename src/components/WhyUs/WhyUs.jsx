@@ -44,7 +44,7 @@ export default function WhyUs() {
                 modules={[Navigation, Autoplay]}
                 centeredSlides={true}
                 centeredSlidesBounds={true}
-                className={`${s.whyus__swiper} mySwiper`}
+                className= 'mySwiper'
             >
                 {sliderData.map((slide, index) => (
                     <SwiperSlide
