@@ -9,9 +9,11 @@ export default function MainPage() {
     return (
         <>
             <Header />
-            <HeroSection />
-            <WhyUs />
-            <Plans />
+            <main>
+                <HeroSection />
+                <WhyUs />
+                <Plans />
+            </main>
             <Footer />
         </>
     );

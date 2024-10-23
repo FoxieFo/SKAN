@@ -17,7 +17,6 @@
         height: 132px;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
-        position: relative;
 
         &Text {
             padding: 30px 0 30px 30px;
@@ -30,9 +29,6 @@
 
         &Img {
             padding: 10px;
-            position: absolute;
-            right: 10px;
-            top: 10px;
         }
     }
 
