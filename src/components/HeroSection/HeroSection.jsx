@@ -12,13 +12,15 @@ export default function HeroSection() {
             <div className={s.herosection__info}>
                 <h1 className={s.herosection__infoTitle}>сервис по поиску публикаций о компании по его ИНН</h1>
                 <p className={s.herosection__infoText}>Комплексный анализ публикаций, получение данных в формате PDF на электронную почту</p>
-                {isAuthenticated ?
-                    <Button title={'Запросить данные'} className={s.herosection__infoBtn}></Button>
-                    :
-                    ''
-                }
+                <div className={s.herosection__infoBtn}>
+                    {isAuthenticated ?
+                        <Button title={'Запросить данные'} to="/search"></Button>
+                        :
+                        ''
+                    }
+                </div>
             </div>
-            <img src={HeroSectionImg} alt="" />
+            <img src={HeroSectionImg} />
         </section>
     );
 }

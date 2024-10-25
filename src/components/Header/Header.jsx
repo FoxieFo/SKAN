@@ -39,8 +39,8 @@ export default function Header() {
                     <div className={s.header__profileLogin}>
                         <span className={s.header__profileLoginReg}>Зарегистрироваться</span>
                         <img className={s.header__line} src={Line} alt="line" />
-                        <Link to="/auth">
-                            <Button title={'Войти'} colorScheme={'colorScheme__2'} />
+                        <Link>
+                            <Button title={'Войти'} colorScheme={'colorScheme__2'} to={'/auth'}/>
                         </Link>
                     </div>
                 )}

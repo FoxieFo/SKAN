@@ -1,7 +1,10 @@
-import s from './styles.module.scss'
+import { Link } from 'react-router-dom';
+import s from './styles.module.scss';
 
-export default function Button({ title, colorScheme = 'colorScheme__1', className }) {
+export default function Button({ title, colorScheme = 'colorScheme__1', className, to }) {
     return (
-        <button className={`${s.button} ${s[colorScheme]} ${className}`}>{title}</button>
+        <Link to={to} className={`${s.button} ${s[colorScheme]} ${className}`}>
+            {title}
+        </Link>
     );
 }
