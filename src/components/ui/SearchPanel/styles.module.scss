@@ -1,0 +1,92 @@
+.searchpanel {
+    &__container {
+        display: flex;
+        gap: 20px;
+        padding: 21px 40px;
+        box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
+        border-radius: 10px;
+    }
+
+    &__inputs {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+
+        &Item {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            &Label {
+                font-size: 18px;
+            }
+
+            &Input {
+                border: 1px solid var(--gray);
+                padding: 13px;
+                border-radius: 5px;
+                text-align: center;
+            }
+        }
+    }
+
+    &__checkboxes {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &List {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+
+            &Item {
+                display: flex;
+                gap: 17px;
+                &Chekbox {}
+
+                &Name {
+                    font-size: 18px;
+                }
+            }
+        }
+
+        &Send {
+            display: flex;
+            flex-direction: column;
+            align-self: flex-end;
+
+            &Btn {
+                width: 305px;
+                color: var(--white);
+                padding: 5px 10px;
+                border-radius: 5px;
+                transition: background-color 0.3s ease-in-out;
+                background-color: var(--dark-blue);
+                padding: 14px 64px;
+                font-size: 20px;
+
+                &:active {
+                    background-color: var(--gray);
+                }
+
+                &:disabled {
+                    background-color: var(--dark-blue-hover);
+                    opacity: 0.6;
+                }
+            }
+
+            &Important {
+                color: var(--gray);
+                margin-top: 7px;
+            }
+        }
+    }
+}
+
+.dropdown{
+    border: 1px solid var(--gray);
+    padding: 13px;
+    border-radius: 5px;
+    text-align: center;
+}
