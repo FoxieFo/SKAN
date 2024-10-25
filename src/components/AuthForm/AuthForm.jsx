@@ -7,7 +7,7 @@ import Padlock from './../../assets/images/padlock.svg'
 import Heroes from './../../assets/images/auth-img.svg'
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setAuth } from "../../storage/actions";
+import { setAuth } from "../../store/actions";
 import LoginService from './../../services/LoginService'
 
 export default function AuthForm() {

@@ -1,0 +1,18 @@
+.profile {
+    &__container {
+        display: flex;
+        gap: 4px;
+    }
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+
+        &Btn {
+            background-color: transparent;
+            color: var(--gray);
+            align-self: flex-end;
+        }
+    }
+}

@@ -1,12 +1,17 @@
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 import s from './styles.module.scss';
 
 import Logo from './../../assets/images/icons/logo.svg';
 import Line from './../../assets/images/icons/line.svg';
 
 import Button from './../ui/Button/Button';
+import Profile from './../ui/Profile/Profile'
 
 export default function Header() {
+    const isAuthenticated = useSelector((state) => state.auth?.isAuth || false);
+
     return (
         <header className={s.header__container}>
             <Link to="/">
@@ -24,13 +29,17 @@ export default function Header() {
                 </li>
             </ul>
             <div className={s.header__profile}>
-                <div className={s.header__profileLogin}>
-                    <span className={s.header__profileLoginReg}>Зарегистрироваться</span>
-                    <img className={s.header__line} src={Line} alt="line" />
-                    <Link to="/auth">
-                        <Button title={'Войти'} colorScheme={'colorScheme__2'} />
-                    </Link>
-                </div>
+                {isAuthenticated ? (
+                    <Profile />
+                ) : (
+                    <div className={s.header__profileLogin}>
+                        <span className={s.header__profileLoginReg}>Зарегистрироваться</span>
+                        <img className={s.header__line} src={Line} alt="line" />
+                        <Link to="/auth">
+                            <Button title={'Войти'} colorScheme={'colorScheme__2'} />
+                        </Link>
+                    </div>
+                )}
             </div>
         </header>
     );
