@@ -8,6 +8,7 @@ import Line from './../../assets/images/icons/line.svg';
 
 import Button from './../ui/Button/Button';
 import Profile from './../ui/Profile/Profile'
+import CompanyCount from '../ui/CompanyCount/CompnayCount';
 
 export default function Header() {
     const isAuthenticated = useSelector((state) => state.auth?.isAuth || false);
@@ -30,7 +31,10 @@ export default function Header() {
             </ul>
             <div className={s.header__profile}>
                 {isAuthenticated ? (
-                    <Profile />
+                    <div className={s.header__profileLoggedin}>
+                        <CompanyCount />
+                        <Profile />
+                    </div>
                 ) : (
                     <div className={s.header__profileLogin}>
                         <span className={s.header__profileLoginReg}>Зарегистрироваться</span>

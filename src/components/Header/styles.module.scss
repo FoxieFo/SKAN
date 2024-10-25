@@ -29,5 +29,9 @@
                 cursor: pointer;
             }
         }
+        &Loggedin{
+            display: flex;
+            gap: 50px;
+        }
     }
 }

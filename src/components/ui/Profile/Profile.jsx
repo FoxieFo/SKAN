@@ -8,7 +8,7 @@ export default function Profile() {
                 <span className={s.profile__textName}>Алексей А.</span>
                 <button className={s.profile__textBtn}>Выйти</button>
             </div>
-            <img src={ProfilePic} alt="фото пользователя" />
+            <img className={s.profile__img} src={ProfilePic} alt="фото пользователя" />
         </div>
     );
 }
