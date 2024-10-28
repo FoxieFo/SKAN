@@ -35,6 +35,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+
         &List {
             display: flex;
             flex-direction: column;
@@ -43,6 +44,7 @@
             &Item {
                 display: flex;
                 gap: 17px;
+
                 &Chekbox {}
 
                 &Name {
@@ -84,9 +86,49 @@
     }
 }
 
-.dropdown{
-    border: 1px solid var(--gray);
-    padding: 13px;
-    border-radius: 5px;
-    text-align: center;
+/*чекбоксы*/
+
+label {
+    position: relative;
+}
+
+input[type="checkbox"] {
+    appearance: none;
+    background: #fff;
+    height: 1.5em;
+    width: 1.5em;
+    position: relative;
+    cursor: pointer;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    top: 0;
+    background: #fff;
+    border: 1px solid #000000;
+    border-radius: 0;
+    transition: background-color 0.2s;
+}
+
+input[type="checkbox"]:checked::before {
+    background: #fff;
+    border-color: #415674;
+}
+
+input[type="checkbox"]:checked::after {
+    content: url('./../../../assets/images/icons/checkbox.svg');
+    position: absolute;
+    top: 0.15em;
+    left: 0.15em;
+    transition: opacity 0.2s;
+}
+
+input[type="checkbox"]:not(:checked)::after {
+    content: '';
 }
