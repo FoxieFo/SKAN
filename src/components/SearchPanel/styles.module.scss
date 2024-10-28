@@ -52,6 +52,7 @@
 
                 &Name {
                     font-size: 18px;
+                    color: var(--gray);
                 }
             }
         }
@@ -86,6 +87,7 @@
                 margin-top: 7px;
             }
         }
+
     }
 }
 
@@ -122,4 +124,8 @@ input[type="checkbox"]::before {
 
 input[type="checkbox"]:checked::before {
     display: block;
+}
+
+input[type="checkbox"]:checked + .searchpanel__checkboxesListItemName {
+    color: black;
 }

@@ -49,7 +49,7 @@ export default function Dropdown({ title, subtitle, onSelect, calendar, options=
                     {selectedOption ? selectedOption : selectedDate ? selectedDate.toLocaleDateString() : title}
                 </span>
                 {calendar ? (
-                    <div className={s.arrow}></div>
+                    ''
                 ) : (
                     <div className={s.arrow}></div>
                 )}
