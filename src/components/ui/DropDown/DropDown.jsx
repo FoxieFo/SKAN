@@ -4,7 +4,7 @@ import 'react-calendar/dist/Calendar.css';
 
 import s from './styles.module.scss';
 
-export default function Dropdown({ title, subtitle, onSelect, calendar, options=[] }) {
+export default function Dropdown({ title, subtitle, onSelect, calendar, options=[], className }) {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedDate, setSelectedDate] = useState(null);
     const [selectedOption, setSelectedOption] = useState(null);
@@ -43,13 +43,13 @@ export default function Dropdown({ title, subtitle, onSelect, calendar, options=
     };
 
     return (
-        <div className={`${s.dropdown} ${isOpen ? s.active : ''}`} ref={dropdownRef}>
+        <div className={`${s.dropdown} ${className} ${isOpen ? s.active : ''}`} ref={dropdownRef}>
             <div className={s.dropdown__toggle} onClick={toggleDropdown}>
                 <span className={s.dropdown__toggleText}>
                     {selectedOption ? selectedOption : selectedDate ? selectedDate.toLocaleDateString() : title}
                 </span>
                 {calendar ? (
-                    ''
+                    <div className={s.arrow}></div>
                 ) : (
                     <div className={s.arrow}></div>
                 )}
