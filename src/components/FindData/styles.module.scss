@@ -1,6 +1,7 @@
 .finddata {
     &__container {
         display: flex;
+        align-items: flex-end;
         padding: 70px 20px;
         max-width: 1440px;
         margin: 0 auto;
@@ -27,16 +28,16 @@
 
     &__heroes {
         position: relative;
-        &Hero {
-        }
         &Document {
             position: absolute;
             left: 0;
+            top: -200px;
         }
 
         &Folders {
             position: absolute;
             right: 80px;
+            top: -200px;
         }
     }
 }

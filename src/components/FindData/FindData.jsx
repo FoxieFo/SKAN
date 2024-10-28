@@ -1,5 +1,5 @@
 import s from './styles.module.scss'
-import SearchPanel from './../ui/SearchPanel/SearchPanel'
+import SearchPanel from './../SearchPanel/SearchPanel'
 import Hero from './../../assets/images/search-img.svg'
 import Document from './../../assets/images/doc-img.svg'
 import Folders from './../../assets/images/folders-img.svg'

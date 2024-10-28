@@ -1,10 +1,8 @@
+import DropDown from '../ui/DropDown/DropDown'
 import s from './styles.module.scss'
 
 export default function SearchPanel() {
-    const options = [
-        'Любая', 'Негативная', 'Позитивная'
-    ];
-    const defaultOption = options[0];
+    const ton = ['Любая', 'Позитивная', 'Негативная'];
 
     return (
         <div className={s.searchpanel__container}>
@@ -15,6 +13,7 @@ export default function SearchPanel() {
                 </div>
                 <div className={s.searchpanel__inputsItem}>
                     <label className={s.searchpanel__inputsItemLabel} htmlFor='tonality'>Тональность</label>
+                    <DropDown title={'Выберите тональность'} options={ton} />
                 </div>
                 <div className={s.searchpanel__inputsItem}>
                     <label className={s.searchpanel__inputsItemLabel} htmlFor='cuantity'>Количество документов в выдаче *</label>
@@ -22,7 +21,10 @@ export default function SearchPanel() {
                 </div>
                 <div className={s.searchpanel__inputsItem}>
                     <label className={s.searchpanel__inputsItemLabel} htmlFor='ton'>Диапазон поиска *</label>
-                    <input className={s.searchpanel__inputsItemInput} id='ton' type="text" placeholder='12' />
+                    <div className={s.searchpanel__inputsItemCalendar}>
+                        <DropDown title={'Дата начала'} calendar={true} />
+                        <DropDown title={'Дата конца'} calendar={true} />
+                    </div>
                 </div>
             </div>
             <div className={s.searchpanel__checkboxes}>

@@ -27,6 +27,11 @@
                 border-radius: 5px;
                 text-align: center;
             }
+
+            &Calendar {
+                display: flex;
+                gap: 10px;
+            }
         }
     }
 
@@ -44,8 +49,6 @@
             &Item {
                 display: flex;
                 gap: 17px;
-
-                &Chekbox {}
 
                 &Name {
                     font-size: 18px;
@@ -95,40 +98,28 @@ label {
 input[type="checkbox"] {
     appearance: none;
     background: #fff;
+    border: 1px solid #000000;
     height: 1.5em;
     width: 1.5em;
     position: relative;
+    vertical-align: text-bottom;
     cursor: pointer;
+    transition: border-color 0.2s;
 }
 
 input[type="checkbox"]::before {
     content: "";
     position: absolute;
+    inset: 0;
     margin: auto;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    overflow: hidden;
-    top: 0;
-    background: #fff;
-    border: 1px solid #000000;
-    border-radius: 0;
-    transition: background-color 0.2s;
+    display: none;
+    background-image: url('./../../assets/images/icons/checkbox.svg'); /* Убедитесь, что путь к изображению корректен */
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 80%;
+    width: 80%;
 }
 
 input[type="checkbox"]:checked::before {
-    background: #fff;
-    border-color: #415674;
-}
-
-input[type="checkbox"]:checked::after {
-    content: url('./../../../assets/images/icons/checkbox.svg');
-    position: absolute;
-    top: 0.15em;
-    left: 0.15em;
-    transition: opacity 0.2s;
-}
-
-input[type="checkbox"]:not(:checked)::after {
-    content: '';
+    display: block;
 }
