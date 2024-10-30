@@ -24,26 +24,26 @@ export default function SearchPanel() {
         let newErrors = { inn: '', quantity: '', dates: '' };
         let isValid = true;
 
-        if (!inn) {
-            newErrors.inn = 'Введите корректные данные';
+        if (inn.length < 10) {
+            newErrors.inn = 'Введите 10 цифр';
             isValid = false;
         }
-
+    
         if (!quantity) {
             newErrors.quantity = 'Обязательное поле';
             isValid = false;
         }
-
+    
         if (!startDate || !endDate) {
             newErrors.dates = 'Введите корректные данные';
             isValid = false;
-            setHasErrorDropdown(true); // Устанавливаем ошибку для Dropdown
+            setHasErrorDropdown(true);
         } else {
-            setHasErrorDropdown(false); // Убираем ошибку для Dropdown
+            setHasErrorDropdown(false);
         }
-
+    
         setErrors(newErrors);
-
+    
         if (isValid) {
             navigate('/results');
         }
@@ -63,7 +63,12 @@ export default function SearchPanel() {
                         placeholder='10 цифр'
                         maxLength={10}
                         value={inn}
-                        onChange={(e) => setInn(e.target.value)}
+                        onChange={(e) => {
+                            const value = e.target.value;
+                            if (/^\d*$/.test(value)) {
+                                setInn(value);
+                            }
+                        }}
                     />
                     {errors.inn && (
                         <input

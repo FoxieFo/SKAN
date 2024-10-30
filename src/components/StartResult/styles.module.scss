@@ -1,0 +1,30 @@
+.startresult {
+    &__container {
+        padding: 0 20px;
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__text {
+        padding-top: 69px;
+        &Heading {
+            font-family: 'Ferry';
+            text-transform: uppercase;
+            font-size: 60px;
+            font-weight: 900;
+            line-height: 72px;
+        }
+
+        &Item {
+            padding-top: 20px;
+            font-size: 20px;
+        }
+    }
+
+    &__img {
+        padding-top: 25px;
+    }
+}

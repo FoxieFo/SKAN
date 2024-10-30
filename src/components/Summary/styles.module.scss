@@ -1,0 +1,43 @@
+.summary {
+    &__container {
+        padding: 0 20px;
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+
+    &__heading {
+        font-family: Ferry;
+        font-size: 30px;
+        font-weight: 900;
+        line-height: 36px;
+        letter-spacing: 0.02em;
+    }
+
+    &__text {
+        margin-top: 17px;
+        color: var(--gray);
+    }
+
+    &__slider {
+        margin-top: 27px;
+
+        &Values {
+            font-family: Inter;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 24.2px;
+            letter-spacing: 0.02em;
+            width: 133px;
+            height: 158px;
+            display: flex;
+            flex-direction: column;
+            gap: 26px;
+            justify-content: center;
+            background-color: var(--marine-blue);
+            color: var(--white);
+            border-radius: 5px 0 0 5px;
+            padding-left: 28px;
+        }
+    }
+}

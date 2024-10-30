@@ -1,0 +1,16 @@
+.doclist{
+    &__container{
+        padding: 0 20px;
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+        margin-top: 107px;
+    }
+    &__heading{
+        font-family: Ferry;
+        font-size: 30px;
+        font-weight: 900;
+        line-height: 36px;
+        letter-spacing: 0.02em;
+    }
+}
