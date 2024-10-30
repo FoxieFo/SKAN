@@ -28,12 +28,12 @@ export default function SearchPanel() {
             newErrors.inn = 'Введите 10 цифр';
             isValid = false;
         }
-    
+
         if (!quantity) {
             newErrors.quantity = 'Обязательное поле';
             isValid = false;
         }
-    
+
         if (!startDate || !endDate) {
             newErrors.dates = 'Введите корректные данные';
             isValid = false;
@@ -41,11 +41,41 @@ export default function SearchPanel() {
         } else {
             setHasErrorDropdown(false);
         }
-    
+
         setErrors(newErrors);
-    
+
         if (isValid) {
             navigate('/results');
+        }
+    };
+
+    const handleStartDateSelect = (date) => {
+        if (endDate && date > endDate) {
+            setErrors((prevErrors) => ({
+                ...prevErrors,
+                dates: 'Дата начала не может быть позже даты конца',
+            }));
+        } else {
+            setErrors((prevErrors) => ({
+                ...prevErrors,
+                dates: '',
+            }));
+            setStartDate(date);
+        }
+    };
+
+    const handleEndDateSelect = (date) => {
+        if (startDate && date < startDate) {
+            setErrors((prevErrors) => ({
+                ...prevErrors,
+                dates: 'Дата конца не может быть раньше даты начала',
+            }));
+        } else {
+            setErrors((prevErrors) => ({
+                ...prevErrors,
+                dates: '',
+            }));
+            setEndDate(date);
         }
     };
 
@@ -120,14 +150,18 @@ export default function SearchPanel() {
                         <DropDown
                             title={'Дата начала'}
                             calendar={true}
-                            onSelect={(date) => setStartDate(date)}
+                            onSelect={handleStartDateSelect}
                             hasError={hasErrorDropdown}
+                            startDate={startDate}
+                            endDate={endDate}
                         />
                         <DropDown
                             title={'Дата конца'}
                             calendar={true}
-                            onSelect={(date) => setEndDate(date)}
+                            onSelect={handleEndDateSelect}
                             hasError={hasErrorDropdown}
+                            startDate={startDate}
+                            endDate={endDate}
                         />
                     </div>
                     {errors.dates && (

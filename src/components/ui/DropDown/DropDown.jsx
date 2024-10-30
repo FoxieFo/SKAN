@@ -4,7 +4,7 @@ import 'react-calendar/dist/Calendar.css';
 
 import s from './styles.module.scss';
 
-export default function Dropdown({ title, subtitle, onSelect, calendar, options = [], className, hasError = false }) {
+export default function Dropdown({ title, subtitle, onSelect, calendar, options = [], className, hasError = false, startDate, endDate }) {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedDate, setSelectedDate] = useState(null);
     const [selectedOption, setSelectedOption] = useState(null);
@@ -59,8 +59,9 @@ export default function Dropdown({ title, subtitle, onSelect, calendar, options 
                         <CalendarComponent
                             onChange={handleDateChange}
                             value={selectedDate}
+                            minDate={startDate}
+                            maxDate={endDate}
                             className={s.calendarComponent}
-                            minDate={new Date()}
                         />
                     ) : (
                         <div>
