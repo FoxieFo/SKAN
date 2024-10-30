@@ -16,6 +16,7 @@ export default function SearchPanel() {
         quantity: '',
         dates: '',
     });
+    const [hasErrorDropdown, setHasErrorDropdown] = useState(false);
 
     const navigate = useNavigate();
 
@@ -36,6 +37,9 @@ export default function SearchPanel() {
         if (!startDate || !endDate) {
             newErrors.dates = 'Введите корректные данные';
             isValid = false;
+            setHasErrorDropdown(true); // Устанавливаем ошибку для Dropdown
+        } else {
+            setHasErrorDropdown(false); // Убираем ошибку для Dropdown
         }
 
         setErrors(newErrors);
@@ -49,7 +53,9 @@ export default function SearchPanel() {
         <div className={s.searchpanel__container}>
             <div className={s.searchpanel__inputs}>
                 <div className={s.searchpanel__inputsItem}>
-                    <label className={errors.inn ? s.searchpanel__inputsItemLabelError : s.searchpanel__inputsItemLabel} htmlFor='inn'>ИНН компании *</label>
+                    <label className={`${s.searchpanel__inputsItemLabel} ${errors.inn ? s.errorLabel : ''}`} htmlFor='inn'>
+                        ИНН компании <span>*</span>
+                    </label>
                     <input
                         className={`${s.searchpanel__inputsItemInput} ${errors.inn ? s.error : ''}`}
                         id='inn'
@@ -68,7 +74,9 @@ export default function SearchPanel() {
                     )}
                 </div>
                 <div className={s.searchpanel__inputsItem}>
-                    <label className={s.searchpanel__inputsItemLabel} htmlFor='tonality'>Тональность</label>
+                    <label className={s.searchpanel__inputsItemLabel} htmlFor='tonality'>
+                        Тональность
+                    </label>
                     <DropDown
                         title={'Выберите тональность'}
                         options={ton}
@@ -76,7 +84,9 @@ export default function SearchPanel() {
                     />
                 </div>
                 <div className={s.searchpanel__inputsItem}>
-                    <label className={errors.quantity ? s.searchpanel__inputsItemLabelError : s.searchpanel__inputsItemLabel} htmlFor='quantity'>Количество документов в выдаче *</label>
+                    <label className={`${s.searchpanel__inputsItemLabel} ${errors.quantity ? s.errorLabel : ''}`} htmlFor='quantity'>
+                        Количество документов в выдаче <span>*</span>
+                    </label>
                     <input
                         className={`${s.searchpanel__inputsItemInput} ${errors.quantity ? s.error : ''}`}
                         id='quantity'
@@ -98,23 +108,21 @@ export default function SearchPanel() {
                     )}
                 </div>
                 <div className={s.searchpanel__inputsItem}>
-                    <label className={s.searchpanel__inputsItemLabel}>Диапазон поиска *</label>
+                    <label className={`${s.searchpanel__inputsItemLabel} ${errors.dates ? s.errorLabel : ''}`}>
+                        Диапазон поиска <span>*</span>
+                    </label>
                     <div className={s.searchpanel__inputsItemCalendar}>
                         <DropDown
                             title={'Дата начала'}
                             calendar={true}
-                            onSelect={(date) => {
-                                setStartDate(date);
-                                setErrors((prev) => ({ ...prev, dates: '' })); // Сбрасываем ошибку при выборе даты
-                            }}
+                            onSelect={(date) => setStartDate(date)}
+                            hasError={hasErrorDropdown}
                         />
                         <DropDown
                             title={'Дата конца'}
                             calendar={true}
-                            onSelect={(date) => {
-                                setEndDate(date);
-                                setErrors((prev) => ({ ...prev, dates: '' })); // Сбрасываем ошибку при выборе даты
-                            }}
+                            onSelect={(date) => setEndDate(date)}
+                            hasError={hasErrorDropdown}
                         />
                     </div>
                     {errors.dates && (

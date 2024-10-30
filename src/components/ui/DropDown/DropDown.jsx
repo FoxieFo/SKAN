@@ -4,7 +4,7 @@ import 'react-calendar/dist/Calendar.css';
 
 import s from './styles.module.scss';
 
-export default function Dropdown({ title, subtitle, onSelect, calendar, options=[], className }) {
+export default function Dropdown({ title, subtitle, onSelect, calendar, options = [], className, hasError = false }) {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedDate, setSelectedDate] = useState(null);
     const [selectedOption, setSelectedOption] = useState(null);
@@ -27,7 +27,7 @@ export default function Dropdown({ title, subtitle, onSelect, calendar, options=
     }, []);
 
     const handleOptionClick = (option) => {
-        setSelectedOption(option); 
+        setSelectedOption(option);
         if (onSelect) {
             onSelect(option);
         }
@@ -44,21 +44,20 @@ export default function Dropdown({ title, subtitle, onSelect, calendar, options=
 
     return (
         <div className={`${s.dropdown} ${className} ${isOpen ? s.active : ''}`} ref={dropdownRef}>
-            <div className={s.dropdown__toggle} onClick={toggleDropdown}>
+            <div
+                className={`${s.dropdown__toggle} ${hasError ? s.errorBorder : ''}`}
+                onClick={toggleDropdown}
+            >
                 <span className={s.dropdown__toggleText}>
                     {selectedOption ? selectedOption : selectedDate ? selectedDate.toLocaleDateString() : title}
                 </span>
-                {calendar ? (
-                    <div className={s.arrow}></div>
-                ) : (
-                    <div className={s.arrow}></div>
-                )}
+                <div className={s.arrow}></div>
             </div>
             {isOpen && (
                 <div className={`${s.dropdown__menu} ${isOpen ? s.dropdown__menu_active : ''}`}>
                     {calendar ? (
-                        <CalendarComponent 
-                            onChange={handleDateChange} 
+                        <CalendarComponent
+                            onChange={handleDateChange}
                             value={selectedDate}
                             className={s.calendarComponent}
                             minDate={new Date()}
@@ -66,10 +65,11 @@ export default function Dropdown({ title, subtitle, onSelect, calendar, options=
                     ) : (
                         <div>
                             {options.map((option, index) => (
-                                <div 
-                                    key={index} 
-                                    className={s.dropdown__item} 
-                                    onClick={() => handleOptionClick(option)}>
+                                <div
+                                    key={index}
+                                    className={s.dropdown__item}
+                                    onClick={() => handleOptionClick(option)}
+                                >
                                     {option}
                                 </div>
                             ))}

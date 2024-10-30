@@ -87,7 +87,13 @@
     }
 }
 
-/*ошибка*/
+/*ошибки*/
+.searchpanel__inputsItemLabel {
+    &.errorLabel span {
+        color: var(--red);
+    }
+}
+
 .error{
     border: 1px solid var(--red);
     padding: 13px;
