@@ -1,14 +1,14 @@
 import api from './../http';
 
 export default class PostService {
-    static async getHistograms(inn, tonality, limit, startDate, endDate, checkMaxFullness, checkInBusinessNews, checkOnlyMainRole, checkExcludeAnnouncements) {
-        const data = this.buildHistogramRequest(inn, tonality, limit, startDate, endDate, checkMaxFullness, checkInBusinessNews, checkOnlyMainRole, checkExcludeAnnouncements);
+    static async getHistograms(inn, tonality, limit, startDate, endDate ) {
+        const data = this.buildHistogramRequest(inn, tonality, limit, startDate, endDate );
         console.log(data);
         return api.post("/api/v1/objectsearch/histograms", data);
     }
 
-    static async getPostsList(inn, tonality, limit, startDate, endDate, checkMaxFullness, checkInBusinessNews, checkOnlyMainRole, checkExcludeAnnouncements) {
-        const data = this.buildHistogramRequest(inn, tonality, limit, startDate, endDate, checkMaxFullness, checkInBusinessNews, checkOnlyMainRole, checkExcludeAnnouncements);
+    static async getPostsList(inn, tonality, limit, startDate, endDate ) {
+        const data = this.buildHistogramRequest(inn, tonality, limit, startDate, endDate );
         
         return api.post("/api/v1/objectsearch", data);
     }
@@ -17,7 +17,7 @@ export default class PostService {
         return api.post("/api/v1/documents", { ids: ids });
     }
 
-    static buildHistogramRequest(inn, tonality, limit, startDate, endDate, checkMaxFullness, checkInBusinessNews, checkOnlyMainRole, checkExcludeAnnouncements) {
+    static buildHistogramRequest(inn, tonality, limit, startDate, endDate ) {
         return {
             intervalType: "month",
             
@@ -37,12 +37,9 @@ export default class PostService {
                     {
                       type: "company",
                       inn: inn,
-                      maxFullness: checkMaxFullness,
-                      inBusinessNews: checkInBusinessNews
                     }
                   ],
-  
-                  onlyMainRole: checkOnlyMainRole,
+
                   tonality: tonality,
                   onlyWithRiskFactors: false
                 }
@@ -55,7 +52,6 @@ export default class PostService {
 
             attributeFilters: {
                 excludeTechNews: true,
-                excludeAnnouncements: checkExcludeAnnouncements,
                 excludeDigests: true
             }
         }

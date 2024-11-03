@@ -1,11 +1,18 @@
 import DropDown from '../ui/DropDown/DropDown';
 import s from './styles.module.scss';
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import PostService from '../../services/PostService';
+import { useEffect, useRef, useState } from 'react';
+import { setHistogram, setHistogramDate, setPostsList } from './../../store/actions';
 
 export default function SearchPanel() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const ton = ['Любая', 'Позитивная', 'Негативная'];
 
+    const docsCountRef = useRef();
     const [inn, setInn] = useState('');
     const [quantity, setQuantity] = useState('');
     const [selectedTonality, setSelectedTonality] = useState('');
@@ -17,37 +24,38 @@ export default function SearchPanel() {
         dates: '',
     });
     const [hasErrorDropdown, setHasErrorDropdown] = useState(false);
+    const searchBtnRef = useRef();
+    const tonality = selectedTonality;
 
-    const navigate = useNavigate();
+    async function handleSearch() {
+        const inn = document.getElementById("inn").value;
+        const tonality = selectedTonality.value;
+        const limit = docsCountRef.current.value;
 
-    const handleSearch = () => {
-        let newErrors = { inn: '', quantity: '', dates: '' };
-        let isValid = true;
+        searchBtnRef.current.disabled = true;
 
-        if (inn.length < 10) {
-            newErrors.inn = 'Введите 10 цифр';
-            isValid = false;
-        }
+        dispatch(setHistogramDate(undefined));
+        dispatch(setPostsList(undefined));
+        navigate("/results");
 
-        if (!quantity) {
-            newErrors.quantity = 'Обязательное поле';
-            isValid = false;
-        }
+        await PostService.getHistograms(inn, tonality, limit,
+            startDate, endDate)
+            .then(response => {
+                dispatch(setHistogram(response));
+            })
+            .catch(response => {
+                console.log("Error. " + JSON.stringify(response));
+            });
 
-        if (!startDate || !endDate) {
-            newErrors.dates = 'Введите корректные данные';
-            isValid = false;
-            setHasErrorDropdown(true);
-        } else {
-            setHasErrorDropdown(false);
-        }
-
-        setErrors(newErrors);
-
-        if (isValid) {
-            navigate('/results');
-        }
-    };
+        await PostService.getPostsList(inn, tonality, limit,
+            startDate, endDate)
+            .then(response => {
+                dispatch(setPostsList(response.data.items));
+            })
+            .catch(response => {
+                console.log("Error. " + JSON.stringify(response))
+            });
+    }
 
     const handleStartDateSelect = (date) => {
         if (endDate && date > endDate) {
@@ -104,8 +112,7 @@ export default function SearchPanel() {
                         <input
                             className={s.errorText}
                             value={errors.inn}
-                            onChange={(e) => setErrors((prev) => ({ ...prev, inn: e.target.value }))}
-                        />
+                            onChange={(e) => setErrors((prev) => ({ ...prev, inn: e.target.value }))} />
                     )}
                 </div>
                 <div className={s.searchpanel__inputsItem}>
@@ -123,6 +130,7 @@ export default function SearchPanel() {
                         Количество документов в выдаче <span>*</span>
                     </label>
                     <input
+                        ref={docsCountRef}
                         className={`${s.searchpanel__inputsItemInput} ${errors.quantity ? s.error : ''}`}
                         id='quantity'
                         type="text"
@@ -138,8 +146,7 @@ export default function SearchPanel() {
                         <input
                             className={s.errorText}
                             value={errors.quantity}
-                            onChange={(e) => setErrors((prev) => ({ ...prev, quantity: e.target.value }))}
-                        />
+                            onChange={(e) => setErrors((prev) => ({ ...prev, quantity: e.target.value }))} />
                     )}
                 </div>
                 <div className={s.searchpanel__inputsItem}>
@@ -168,49 +175,45 @@ export default function SearchPanel() {
                         <input
                             className={s.errorText}
                             value={errors.dates}
-                            onChange={(e) => setErrors((prev) => ({ ...prev, dates: e.target.value }))}
-                        />
+                            onChange={(e) => setErrors((prev) => ({ ...prev, dates: e.target.value }))} />
                     )}
                 </div>
             </div>
             <div className={s.searchpanel__checkboxes}>
-                <div className={s.searchpanel__checkboxes}>
-                    <div className={s.searchpanel__checkboxesList}>
-                        <label className={s.searchpanel__checkboxesListItem}>
-                            <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} />
-                            <p className={s.searchpanel__checkboxesListItemName} >Признак максимальной полноты</p>
-                        </label>
-                        <label className={s.searchpanel__checkboxesListItem}>
-                            <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} />
-                            <p className={s.searchpanel__checkboxesListItemName} >Упоминания в бизнес-контексте</p>
-                        </label>
-                        <label className={s.searchpanel__checkboxesListItem}>
-                            <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} />
-                            <p className={s.searchpanel__checkboxesListItemName} >Главная роль в публикации</p>
-                        </label>
-                        <label className={s.searchpanel__checkboxesListItem}>
-                            <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} />
-                            <p className={s.searchpanel__checkboxesListItemName} >Публикации только с риск-факторами</p>
-                        </label>
-                        <label className={s.searchpanel__checkboxesListItem}>
-                            <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} />
-                            <p className={s.searchpanel__checkboxesListItemName} >Включать технические новости рынков</p>
-                        </label>
-                        <label className={s.searchpanel__checkboxesListItem}>
-                            <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} />
-                            <p className={s.searchpanel__checkboxesListItemName} >Включать анонсы и календари</p>
-                        </label>
-                        <label className={s.searchpanel__checkboxesListItem}>
-                            <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} />
-                            <p className={s.searchpanel__checkboxesListItemName} >Включать сводки новостей</p>
-                        </label>
-                    </div>
+                <div className={s.searchpanel__checkboxesList}>
+                    <label className={s.searchpanel__checkboxesListItem}>
+                        <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} disabled />
+                        <p className={s.searchpanel__checkboxesListItemName} >Признак максимальной полноты</p>
+                    </label>
+                    <label className={s.searchpanel__checkboxesListItem}>
+                        <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} disabled />
+                        <p className={s.searchpanel__checkboxesListItemName} >Упоминания в бизнес-контексте</p>
+                    </label>
+                    <label className={s.searchpanel__checkboxesListItem}>
+                        <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} disabled />
+                        <p className={s.searchpanel__checkboxesListItemName} >Главная роль в публикации</p>
+                    </label>
+                    <label className={s.searchpanel__checkboxesListItem}>
+                        <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} disabled />
+                        <p className={s.searchpanel__checkboxesListItemName} >Публикации только с риск-факторами</p>
+                    </label>
+                    <label className={s.searchpanel__checkboxesListItem}>
+                        <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} disabled />
+                        <p className={s.searchpanel__checkboxesListItemName} >Включать технические новости рынков</p>
+                    </label>
+                    <label className={s.searchpanel__checkboxesListItem}>
+                        <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} disabled />
+                        <p className={s.searchpanel__checkboxesListItemName} >Включать анонсы и календари</p>
+                    </label>
+                    <label className={s.searchpanel__checkboxesListItem}>
+                        <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} disabled />
+                        <p className={s.searchpanel__checkboxesListItemName} >Включать сводки новостей</p>
+                    </label>
                 </div>
                 <div className={s.searchpanel__checkboxesSend}>
-                    <button className={s.searchpanel__checkboxesSendBtn} onClick={handleSearch}>
-                        Поиск
+                    <button className={s.searchpanel__checkboxesSendBtn} onClick={handleSearch} ref={searchBtnRef}>
+                        Искать
                     </button>
-                    <span className={s.searchpanel__checkboxesSendImportant}>* Обязательные к заполнению поля</span>
                 </div>
             </div>
         </div>
