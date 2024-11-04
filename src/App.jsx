@@ -5,10 +5,12 @@ import MainPage from './pages/MainPage/MainPage';
 import AuthPage from './pages/AuthPage/AuthPage';
 import SearchPage from './pages/SearchPage/SearchPage';
 import ResultPage from './pages/ResultPage/ResultPage';
+import TokenNav from './store/TokenNav';
 
 function App() {
   return (
     <Router>
+      <TokenNav/>
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/auth" element={<AuthPage />} />

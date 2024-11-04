@@ -1,4 +1,5 @@
 import s from './styles.module.scss'
+import SliderResult from './../SliderResult/SliderResult'
 
 export default function Summary() {
     return (
@@ -11,7 +12,7 @@ export default function Summary() {
                     <li>Всего</li>
                     <li>Риски</li>
                 </ul>
-                
+                <SliderResult />
             </div>
         </section>
     );

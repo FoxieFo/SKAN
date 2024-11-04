@@ -120,6 +120,7 @@ export default function SearchPanel() {
                         Тональность
                     </label>
                     <DropDown
+                        id="tonality"
                         title={'Выберите тональность'}
                         options={ton}
                         onSelect={(option) => setSelectedTonality(option)}
@@ -181,34 +182,34 @@ export default function SearchPanel() {
             </div>
             <div className={s.searchpanel__checkboxes}>
                 <div className={s.searchpanel__checkboxesList}>
-                    <label className={s.searchpanel__checkboxesListItem}>
-                        <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} disabled />
+                    <div  className={s.searchpanel__checkboxesListItem}>
+                        <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} />
                         <p className={s.searchpanel__checkboxesListItemName} >Признак максимальной полноты</p>
-                    </label>
-                    <label className={s.searchpanel__checkboxesListItem}>
-                        <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} disabled />
+                    </div >
+                    <div  className={s.searchpanel__checkboxesListItem}>
+                        <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} />
                         <p className={s.searchpanel__checkboxesListItemName} >Упоминания в бизнес-контексте</p>
-                    </label>
-                    <label className={s.searchpanel__checkboxesListItem}>
-                        <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} disabled />
+                    </div >
+                    <div  className={s.searchpanel__checkboxesListItem}>
+                        <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} />
                         <p className={s.searchpanel__checkboxesListItemName} >Главная роль в публикации</p>
-                    </label>
-                    <label className={s.searchpanel__checkboxesListItem}>
-                        <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} disabled />
+                    </div >
+                    <div  className={s.searchpanel__checkboxesListItem}>
+                        <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} />
                         <p className={s.searchpanel__checkboxesListItemName} >Публикации только с риск-факторами</p>
-                    </label>
-                    <label className={s.searchpanel__checkboxesListItem}>
-                        <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} disabled />
+                    </div >
+                    <div  className={s.searchpanel__checkboxesListItem}>
+                        <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} />
                         <p className={s.searchpanel__checkboxesListItemName} >Включать технические новости рынков</p>
-                    </label>
-                    <label className={s.searchpanel__checkboxesListItem}>
-                        <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} disabled />
+                    </div >
+                    <div  className={s.searchpanel__checkboxesListItem}>
+                        <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} />
                         <p className={s.searchpanel__checkboxesListItemName} >Включать анонсы и календари</p>
-                    </label>
-                    <label className={s.searchpanel__checkboxesListItem}>
-                        <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} disabled />
+                    </div >
+                    <div  className={s.searchpanel__checkboxesListItem}>
+                        <input type="checkbox" className={s.searchpanel__checkboxesListItemCheckbox} />
                         <p className={s.searchpanel__checkboxesListItemName} >Включать сводки новостей</p>
-                    </label>
+                    </div >
                 </div>
                 <div className={s.searchpanel__checkboxesSend}>
                     <button className={s.searchpanel__checkboxesSendBtn} onClick={handleSearch} ref={searchBtnRef}>
