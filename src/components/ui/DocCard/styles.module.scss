@@ -1,15 +1,59 @@
-.doccard{
-    &__container{}
-    &__heading{
-        &Date{}
-        &Link{}
+.doccard {
+    &__container {
+        border-radius: 5px;
+        margin-top: 58px;
+        padding: 19px 30px;
+        height: 690px;
+        width: 48%;
+        box-shadow: 0px 0px 22px -6px rgba(0, 0, 0, 0.75);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
-    &__title{}
-    &__type{}
-    &__img{}
-    &__content{}
-    &__footer{
-        &Btn{}
-        &Count{}
+
+    &__heading {
+        display: flex;
+        gap: 14px;
+        color: var(--gray);
+
+        &Date {}
+
+        &Link {
+            &Source {
+                color: var(--gray);
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &__title {
+        font-size: 26px;
+        font-weight: 500;
+        line-height: 31.47px;
+        letter-spacing: 0.02em;
+    }
+
+    &__type {}
+
+    &__img {}
+
+    &__content {}
+
+    &__footer {
+        display: flex;
+        justify-content: space-between;
+        &Btn {
+            padding: 14px 30px;
+            border-radius: 5px;
+            background-color: var(--light-blue);
+            a{
+                color: var(--black);
+            }
+        }
+
+        &Count {
+            align-self: center;
+            color: var(--gray);
+        }
     }
 }

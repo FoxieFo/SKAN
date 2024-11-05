@@ -1,16 +1,39 @@
-.doclist{
-    &__container{
+.doclist {
+    &__container {
         padding: 0 20px;
         width: 100%;
         max-width: 1440px;
         margin: 0 auto;
         margin-top: 107px;
+        display: flex;
+        flex-direction: column;
     }
-    &__heading{
+
+    &__heading {
         font-family: Ferry;
         font-size: 30px;
         font-weight: 900;
         line-height: 36px;
         letter-spacing: 0.02em;
+    }
+
+    &__articles {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__btn {
+
+        font-size: 22px;
+        font-weight: 500;
+        line-height: 26.63px;
+        letter-spacing: 0.04em;
+        align-self: center;
+        margin-top: 38px;
+        margin-bottom: 109px;
+        color: var(--white);
+        background-color: var(--dark-blue);
+        padding: 16px 50px;
+        border-radius: 5px;
     }
 }

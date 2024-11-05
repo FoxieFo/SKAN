@@ -45,12 +45,12 @@ export default function DocList() {
     return (
         <section className={s.doclist__container}>
             <h3 className={s.doclist__heading}>Список документов</h3>
-            <div>
+            <div className={s.doclist__articles}>
                 {loadedDocs.map((item) => (
                     <DocCard key={item.ok.id} data={item.ok} />
                 ))}
             </div>
-            <button onClick={handleShowMore}>Показать больше</button>
+            <button className={s.doclist__btn} onClick={handleShowMore}>Показать больше</button>
             {error && <p>Произошла ошибка при загрузке документов.</p>}
         </section>
     );

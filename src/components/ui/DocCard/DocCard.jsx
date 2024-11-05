@@ -62,16 +62,21 @@ export default function DocCard({ data }) {
     return (
         <article className={s.doccard__container}>
             <div className={s.doccard__heading}>
-                <div className={s.doccard__headingDate}></div>
-                <a className={s.doccard__headingLink}></a>
+                <div className={s.doccard__headingDate}>{new Date(data.issueDate).toLocaleDateString()}</div>
+                <a href={data.url} target="_blank" rel="noreferrer" className={s.doccard__headingLink}><span className={s.doccard__headingLinkSource}>{data.source.name}</span></a>
             </div>
             <h3 className={s.doccard__title}>{data.title.text}</h3>
-            <p className={s.doccard__type}></p>
-            <img className={s.doccard__img}/>
+            <p className={s.doccard__type}>
+                
+            </p>
+            <img className={s.doccard__img} />
             <p className={s.doccard__content}></p>
             <div className={s.doccard__footer}>
-                <button className={s.doccard__footerBtn}>Читать в источнике</button>
-                <span className={s.doccard__footerCount}>{data.attributes.wordCount}</span>
+                <button className={s.doccard__footerBtn}>
+                    <a href={data.url} target="_blank" rel="noreferrer">
+                        Читать в источнике
+                    </a></button>
+                <span className={s.doccard__footerCount}>{data.attributes.wordCount} слов</span>
             </div>
         </article>
     );
