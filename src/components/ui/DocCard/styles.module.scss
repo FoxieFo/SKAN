@@ -1,0 +1,15 @@
+.doccard{
+    &__container{}
+    &__heading{
+        &Date{}
+        &Link{}
+    }
+    &__title{}
+    &__type{}
+    &__img{}
+    &__content{}
+    &__footer{
+        &Btn{}
+        &Count{}
+    }
+}
