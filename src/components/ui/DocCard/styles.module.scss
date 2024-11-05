@@ -3,7 +3,7 @@
         border-radius: 5px;
         margin-top: 58px;
         padding: 19px 30px;
-        height: 690px;
+        gap: 15px;
         width: 48%;
         box-shadow: 0px 0px 22px -6px rgba(0, 0, 0, 0.75);
         display: flex;
@@ -33,20 +33,35 @@
         letter-spacing: 0.02em;
     }
 
-    &__type {}
+    &__type {
+        background-color: #FFB64F;
+        padding: 4px 11px;
+        border-radius: 5px;
+        align-self: flex-start;
+    }
 
     &__img {}
 
-    &__content {}
+    &__content {
+        color: var(--gray);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 19.36px;
+        letter-spacing: 0.02em;
+        text-align: left;
+
+    }
 
     &__footer {
         display: flex;
         justify-content: space-between;
+
         &Btn {
             padding: 14px 30px;
             border-radius: 5px;
             background-color: var(--light-blue);
-            a{
+
+            a {
                 color: var(--black);
             }
         }
