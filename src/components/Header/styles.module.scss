@@ -34,4 +34,10 @@
             gap: 50px;
         }
     }
+    @media (max-width: 840px){
+        &__links{
+            display: none;
+        }
+        &__profile{}
+    }
 }

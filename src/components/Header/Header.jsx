@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import useWindowWidth from './../../hooks/useWindowWidth';
 
 import s from './styles.module.scss';
 
@@ -12,6 +13,7 @@ import CompanyCount from '../ui/CompanyCount/CompnayCount';
 
 export default function Header() {
     const isAuthenticated = useSelector((state) => state.auth?.isAuth || false);
+    const windowWidth = useWindowWidth();
 
     return (
         <header className={s.header__container}>
@@ -30,11 +32,18 @@ export default function Header() {
                 </li>
             </ul>
             <div className={s.header__profile}>
-                {isAuthenticated ? (
-                    <div className={s.header__profileLoggedin}>
-                        <CompanyCount />
-                        <Profile />
-                    </div>
+            {isAuthenticated ? (
+                    windowWidth < 840 ? (
+                        <div className={s.header__profileLoggedinBurger}>
+                            <CompanyCount />
+                            <div className={s.burger}></div>
+                        </div>
+                    ) : (
+                        <div className={s.header__profileLoggedin}>
+                            <CompanyCount />
+                            <Profile />
+                        </div>
+                    )
                 ) : (
                     <div className={s.header__profileLogin}>
                         <span className={s.header__profileLoginReg}>Зарегистрироваться</span>

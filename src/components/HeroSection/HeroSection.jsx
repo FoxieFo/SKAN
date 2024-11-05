@@ -20,7 +20,7 @@ export default function HeroSection() {
                     }
                 </div>
             </div>
-            <img src={HeroSectionImg} />
+            <img className={s.herosection__img} src={HeroSectionImg} />
         </section>
     );
 }

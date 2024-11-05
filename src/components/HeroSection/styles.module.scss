@@ -24,4 +24,17 @@
             margin-top: 70px;
         }
     }
+    &__img{
+        width: 50%;
+    }
+    @media (max-width: 1070px) {
+        &__container{
+            display: flex;
+            flex-direction: column;
+        }
+        &__img{
+            width: 100%;
+        }
+    }
 }
+
