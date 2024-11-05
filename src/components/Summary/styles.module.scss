@@ -26,6 +26,9 @@
         }
 
         &Values {
+            position: absolute;
+            left: 252px;
+            z-index: 1000;
             font-family: Inter;
             font-size: 20px;
             font-weight: 500;

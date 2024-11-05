@@ -6,7 +6,7 @@ export const accountInitialState = {
 };
 
 export const publicationsInitialState = {
-    histogram: JSON.parse(localStorage.getItem("histogram")) || [],
-    histogramLoadedDate: JSON.parse(localStorage.getItem("histogramLoadDate")) || null,
-    publicationsList: JSON.parse(localStorage.getItem("publicationsList")) || []
+    histogram: JSON.parse(localStorage.getItem("histogram")),
+    histogramLoadedDate: JSON.parse(localStorage.getItem("histogramLoadDate")),
+    publicationsList: JSON.parse(localStorage.getItem("publicationsList"))
 };

@@ -18,19 +18,20 @@ const PrevArrow = ({ className, style, onClick }) => (
   </div>
 );
 
-const Slide = ({ date, total, riskFactors }) => (
-  <div className={s.slide__container}>
-    <div>{date}</div>
-    <div>{total}</div>
-    <div>{riskFactors}</div>
-  </div>
-);
+const Slide = ({ date, total, riskFactors }) => {
+
+  const formattedDate = new Date(date).toLocaleDateString("ru-RU");
+  return (
+    <div className={s.slide__container}>
+      <div>{formattedDate}</div>
+      <div>{total}</div>
+      <div>{riskFactors}</div>
+    </div>
+  );
+};
 
 const SliderResult = () => {
   const histogram = useSelector(state => state.publications.histogram);
-  const histogramLoadedDate = useSelector(state => state.publications.histogramLoadedDate);
-
-  console.log('Histogram data:', histogram);
 
   if (!histogram.length) {
     return <div>No data available</div>;
@@ -46,17 +47,24 @@ const SliderResult = () => {
   };
 
   return (
-    <div className={s.sliderresult__container}>
-      <Slider {...settings}>
-        {histogram.map((item, index) => (
-          <Slide
-            key={index}
-            date={item.date}
-            total={item.total}
-            riskFactors={item.riskFactors}
-          />
-        ))}
-      </Slider>
+    <div className={s.sliderresult__wrapper}>
+      <ul className={s.sliderresult__values}>
+        <li>Период</li>
+        <li>Всего</li>
+        <li>Риски</li>
+      </ul>
+      <div className={s.sliderresult__container}>
+        <Slider {...settings}>
+          {histogram.map((item, index) => (
+            <Slide
+              key={index}
+              date={item.date}
+              total={item.total}
+              riskFactors={item.riskFactors}
+            />
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 };
