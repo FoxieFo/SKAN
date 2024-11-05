@@ -39,7 +39,7 @@ export default function DocList() {
 
     const handleShowMore = () => {
         setShowCard(prev => prev + 1);
-        fetchDocuments(showCard, 1);
+        fetchDocuments(showCard, 2);
     };
 
     return (

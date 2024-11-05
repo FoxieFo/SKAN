@@ -18,8 +18,10 @@
     }
 
     &__articles {
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-between;
+    margin: 0 auto;
     }
 
     &__btn {
