@@ -5,10 +5,12 @@ import { useDispatch } from "react-redux";
 import PostService from '../../services/PostService';
 import { useEffect, useRef, useState } from 'react';
 import { setHistogram, setHistogramDate, setPostsList } from './../../store/actions';
+import useWindowWidth from './../../hooks/useWindowWidth'
 
 export default function SearchPanel() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const width = useWindowWidth();
 
     const ton = ['Любая', 'Позитивная', 'Негативная'];
 
@@ -179,6 +181,11 @@ export default function SearchPanel() {
                             onChange={(e) => setErrors((prev) => ({ ...prev, dates: e.target.value }))} />
                     )}
                 </div>
+                {width < 776 && (
+                    <button className={s.searchpanel__checkboxesSendBtn} onClick={handleSearch} ref={searchBtnRef}>
+                        Искать
+                    </button>
+                )}
             </div>
             <div className={s.searchpanel__checkboxes}>
                 <div className={s.searchpanel__checkboxesList}>

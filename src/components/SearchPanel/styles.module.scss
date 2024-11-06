@@ -76,6 +76,9 @@
                     background-color: var(--dark-blue-hover);
                     opacity: 0.6;
                 }
+                @media (max-width: 776px) {
+                    width: 100%;
+                }
             }
 
             &Important {
