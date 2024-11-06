@@ -33,7 +33,7 @@ const Slide = ({ date, total, riskFactors }) => {
 const SliderResult = () => {
   const histogram = useSelector(state => state.publications.histogram);
 
-  if (!histogram.length) {
+  if (!histogram || !histogram.length) {
     return <div>No data available</div>;
   }
 

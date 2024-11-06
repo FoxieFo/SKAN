@@ -1,7 +1,7 @@
 import { createAction } from '@reduxjs/toolkit';
 
 export const ACTIONS = {
-    SET_AUTH: "SET_AUTH",
+	SET_AUTH: "SET_AUTH",
 	SET_TARIFF: "SET_TARIFF",
 	SET_ACCOUNT_INFO: "SET_ACCOUNT_INFO",
 	SET_HISTOGRAM: "SET_HISTOGRAM",
@@ -31,14 +31,12 @@ export const setAccountInfo = (usedCompanyCount, companyLimit) => {
 	}
 }
 
-export const setHistogram = createAction('SET_HISTOGRAM', function prepare(response) {
-    return {
-        payload: {
-            data: response.data,
-            headers: { contentLength: response.headers['content-length'] }
-        }
-    };
-});
+export const setHistogram = (response) => {
+	return {
+		type: ACTIONS.SET_HISTOGRAM,
+		response: response
+	}
+}
 
 export const setHistogramDate = (date) => {
 	return {
