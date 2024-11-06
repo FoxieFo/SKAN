@@ -5,6 +5,12 @@
         padding: 70px 20px;
         max-width: 1440px;
         margin: 0 auto;
+        gap: 20px;
+
+        @media (max-width: 1199px) {
+            flex-direction: column;
+            align-items: center;
+        }
     }
 
     &__main {
@@ -14,6 +20,10 @@
             font-size: 60px;
             font-weight: 900;
             line-height: 72px;
+
+            @media (max-width: 570px) {
+                font-size: 40px;
+            }
         }
 
         &Text {
@@ -28,6 +38,7 @@
 
     &__heroes {
         position: relative;
+
         &Document {
             position: absolute;
             left: 0;
@@ -39,5 +50,13 @@
             right: 80px;
             top: -200px;
         }
+    }
+}
+
+@media (max-width: 1199px) {
+
+    .finddata__heroesDocument,
+    .finddata__heroesFolders {
+        display: none;
     }
 }

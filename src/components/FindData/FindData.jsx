@@ -5,6 +5,7 @@ import Document from './../../assets/images/doc-img.svg'
 import Folders from './../../assets/images/folders-img.svg'
 
 export default function FindData() {
+
     return (
         <section className={s.finddata__container}>
             <div className={s.finddata__main}>

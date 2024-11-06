@@ -144,3 +144,18 @@ input[type="checkbox"]:checked::before {
 input[type="checkbox"]:checked + .searchpanel__checkboxesListItemName {
     color: black;
 }
+
+@media (max-width: 775px) {
+    .searchpanel__checkboxes {
+      display: none;
+    }
+    .searchpanel__inputs{
+        width: 100%;
+    }
+  }
+
+  @media (max-width: 570px) {
+    .searchpanel__inputsItemCalendar{
+        flex-direction: column;
+    }
+  }
