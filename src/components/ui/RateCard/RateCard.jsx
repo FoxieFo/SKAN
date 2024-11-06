@@ -38,7 +38,7 @@ export default function RateCard({ img, title, subtitle, price, crossedPrice, pl
                         ))}
                     </ul>
                 </div>
-                <Button title={'Подробнее'} />
+                <Button title={'Подробнее'} className={s.btn}/>
             </div>
         </div>
     );

@@ -16,12 +16,20 @@
         font-weight: 900;
         line-height: 54px;
     }
-    &__options{
+
+    &__options {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         gap: 37px;
         margin-bottom: 119px;
+    }
+
+    @media (max-width: 1026px) {
+        &__options {
+            align-items: center;
+            flex-direction: column;
+        }
     }
 }
 

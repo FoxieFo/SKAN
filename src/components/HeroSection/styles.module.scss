@@ -15,6 +15,9 @@
             font-size: 60px;
             font-weight: 900;
             line-height: 72px;
+            @media (max-width: 976px) {
+                font-size: 50px;
+            }
         }
         &Text{
             padding-top: 20px;

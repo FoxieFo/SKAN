@@ -4,8 +4,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/autoplay';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
-import { Autoplay } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
 import SliderCard from '../ui/SliderCard/SliderCard';
 
 import HeroWhyUs from './../../assets/images/why-us-img.svg';
@@ -44,15 +43,25 @@ export default function WhyUs() {
                 modules={[Navigation, Autoplay]}
                 centeredSlides={true}
                 centeredSlidesBounds={true}
-                className= 'mySwiper'
+                className='mySwiper'
+                breakpoints={{
+                    965: {
+                        slidesPerView: 2,
+                    },
+                    0: {
+                        slidesPerView: 1,
+                    },
+                }}
             >
                 {sliderData.map((slide, index) => (
                     <SwiperSlide
                         style={{
-                            'display': 'flex',
-                            'justifyContent': 'center',
-                            'alignItems': 'center',
-                        }} key={index}>
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                        }}
+                        key={index}
+                    >
                         <SliderCard img={slide.img} text={slide.text} />
                     </SwiperSlide>
                 ))}
