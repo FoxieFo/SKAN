@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import s from './styles.module.scss'
+import useWindowWidth from './../../hooks/useWindowWidth'
 import Google from './../../assets/images/icons/google.svg'
 import Facebook from './../../assets/images/icons/facebook.svg'
 import Yandex from './../../assets/images/icons/yandex.svg'
@@ -41,7 +42,7 @@ export default function AuthForm() {
 
     async function onLoginClick() {
         loginBtnRef.current.disabled = true;
-    
+
         try {
             const response = await LoginService.login(loginData, passData);
             dispatch(setAuth(true));
@@ -56,6 +57,8 @@ export default function AuthForm() {
         }
     }
 
+    const windowWidth = useWindowWidth();
+    
     const onLoginKeyDown = (event) => {
         if (event.code === "Enter")
             passwordInputRef.current.focus();
@@ -72,7 +75,9 @@ export default function AuthForm() {
                 <p className={s.authform__infoText}>
                     Для оформления подписки на тариф, необходимо авторизоваться.
                 </p>
-                <img src={Heroes} alt="heroes" className={s.authform__heroesImg} />
+                {windowWidth >= 900 && (
+                    <img src={Heroes} alt="heroes" className={s.authform__heroesImg} />
+                )}
             </div>
 
             <div className={s.authform__form}>
@@ -128,6 +133,10 @@ export default function AuthForm() {
 
                 <img src={Padlock} alt="Padlock" className={s.authform__img} />
             </div>
+
+            {windowWidth < 900 && (
+                <img src={Heroes} alt="heroes" className={s.authform__heroesImg} />
+            )}
         </section>
     );
 }
