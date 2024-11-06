@@ -6,6 +6,9 @@
         margin: 0 auto;
         display: flex;
         justify-content: space-between;
+        @media (max-width: 1115px) {
+            flex-direction: column;
+        }
     }
 
     &__text {
@@ -16,6 +19,9 @@
             font-size: 60px;
             font-weight: 900;
             line-height: 72px;
+            @media (max-width: 1115px) {
+                font-size: 40px;
+            }
         }
 
         &Item {
@@ -26,5 +32,10 @@
 
     &__img {
         padding-top: 25px;
+        width: 100%;
+        @media (max-width: 1115px) {
+            width: 60%;
+            align-self: center;
+        }
     }
 }

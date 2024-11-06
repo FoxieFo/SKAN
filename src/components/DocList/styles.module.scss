@@ -19,13 +19,17 @@
 
     &__articles {
         display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    justify-content: space-between;
-    margin: 0 auto;
+        grid-template-columns: repeat(2, 1fr);
+        justify-content: space-between;
+        gap: 30px;
+        margin: 0 auto;
+        @media (max-width:869px) {
+            display: flex;
+            flex-direction: column;
+        }
     }
 
     &__btn {
-
         font-size: 22px;
         font-weight: 500;
         line-height: 26.63px;

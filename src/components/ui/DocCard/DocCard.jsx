@@ -20,16 +20,13 @@ function formatContent(inputMarkup) {
         .replaceAll("</vue>", "</span>")
         .replaceAll("<br>", "");
 
-    // Replace <figure> elements containing images with <img> elements or remove them if missing src
     formattedMarkup = formattedMarkup.replace(/<figure>(.*?)<\/figure>/g, (match) => {
         const srcMatch = match.match(/data-image-src="([^"]+)"/);
         return srcMatch ? `<img src="${srcMatch[1]}" alt="Фото из публикации">` : "";
     });
 
-    // Remove empty <span> and <p> elements
     formattedMarkup = formattedMarkup.replace(/<span><\/span>|<p><\/p>/g, "");
 
-    // Limit content length and add ellipsis if it exceeds 1800 characters
     if (formattedMarkup.length > 1800) {
         formattedMarkup = formattedMarkup.slice(0, formattedMarkup.lastIndexOf("</p>", 1700) + 4) + "...";
     }
