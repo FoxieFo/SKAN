@@ -24,4 +24,15 @@
             background-color: rgb(187, 187, 187);
         }
     }
+    &.colorScheme__3{
+        color: var(--black);
+        background-color: var(--light-blue);
+        padding: 10px 115px;
+        &:hover{
+            background-color: var(--light-blue-hover);
+        }
+        &:active{
+            background-color: rgb(187, 187, 187);
+        }
+    }
 }
